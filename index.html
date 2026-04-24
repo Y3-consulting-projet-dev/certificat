@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -27,7 +27,7 @@
 
     <p class="mt-4">
       Cette session a été organisée conjointement par les cabinets
-      <strong>Société 1</strong> et <strong>Société 2</strong>.
+      <strong>Y Cube Audits et Conseils</strong> et <strong>LHR</strong>.
     </p>
 
     <p class="mt-4">
@@ -62,6 +62,130 @@
       }
     }
   </style>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vérification Certificat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex flex-col items-center justify-center p-6">
+
+  <!-- LOGOS -->
+  <div class="w-full max-w-5xl flex justify-between items-center mb-6">
+    <div class="flex items-center gap-2">
+      <img src="logo1.png" class="h-10">
+      <span class="font-semibold text-gray-700">SOCIÉTÉ 1</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="font-semibold text-gray-700">SOCIÉTÉ 2</span>
+      <img src="logo2.png" class="h-10">
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="text-center mb-6">
+    <div class="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-yellow-500 flex items-center justify-center text-yellow-500 text-2xl animate-pulse">
+      ✔
+    </div>
+
+    <h1 class="text-3xl font-bold text-gray-800">
+      Vérification de Certificat
+    </h1>
+
+    <p class="text-gray-500 mt-1">
+      Authenticité garantie par signature numérique
+    </p>
+  </div>
+
+  <!-- CARD -->
+  <div id="card" class="bg-white max-w-2xl w-full rounded-2xl shadow-xl p-8 text-center transition-all duration-500">
+
+    <div id="statusIcon" class="text-4xl mb-4"></div>
+
+    <h2 id="statusTitle" class="text-xl font-bold mb-2"></h2>
+
+    <p class="text-gray-600 mb-4">
+      Ce QR code confirme que :
+    </p>
+
+    <p id="nom" class="text-lg font-bold text-gray-800"></p>
+
+    <p class="mt-3 text-gray-600">
+      a effectivement pris part à la formation intitulée :
+    </p>
+
+    <div class="mt-4 p-3 rounded-xl border bg-green-50 text-green-700 font-semibold">
+      « MODULE 1 – PILOTER LES DÉCISIONS RH & PAIE DÈS LE RECRUTEMENT »
+    </div>
+
+    <p class="mt-4 text-gray-600">
+      Cette session a été organisée conjointement par les cabinets
+      <strong>Société 1</strong> et <strong>Société 2</strong>.
+    </p>
+
+    <p class="mt-4">
+      📅 Formation réalisée le : 
+      <span id="date" class="font-semibold"></span>
+    </p>
+
+    <p class="mt-6 text-sm text-gray-500">
+      Ce certificat est authentique et délivré dans le cadre des activités de formation des cabinets organisateurs.
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <p class="text-xs text-gray-400 mt-6">
+    🔒 Document sécurisé • Authentification garantie
+  </p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const nom = params.get("nom");
+    const date = params.get("date");
+
+    const statusIcon = document.getElementById("statusIcon");
+    const statusTitle = document.getElementById("statusTitle");
+    const card = document.getElementById("card");
+
+    if (nom && date) {
+      // CERTIFICAT VALIDE
+      statusIcon.innerHTML = "✔";
+      statusIcon.className = "text-green-600 text-4xl mb-4";
+
+      statusTitle.innerText = "Certificat authentique";
+      statusTitle.classList.add("text-green-600");
+
+      document.getElementById("nom").innerText = nom;
+      document.getElementById("date").innerText = date;
+
+    } else {
+      // CERTIFICAT NON TROUVÉ
+      statusIcon.innerHTML = "✖";
+      statusIcon.className = "text-red-500 text-4xl mb-4";
+
+      statusTitle.innerText = "Certificat introuvable";
+      statusTitle.classList.add("text-red-500");
+
+      card.innerHTML = `
+        <div class="text-red-500 text-4xl mb-4">✖</div>
+        <h2 class="text-xl font-bold mb-2 text-red-500">Certificat introuvable</h2>
+        <p class="text-gray-600">
+          Ce certificat n'a pas pu être vérifié.<br>
+          Le lien est peut-être incomplet ou ce document n'est pas authentique.
+        </p>
+      `;
+    }
+  </script>
 
 </body>
 </html>

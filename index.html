@@ -1,75 +1,8 @@
-<!-- <!-- <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Vérification Certificat</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-br from-purple-600 to-indigo-800 min-h-screen flex items-center justify-center text-white">
-
-  <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl max-w-xl text-center animate-fade-in">
-    
-    <h1 class="text-2xl font-bold mb-4 text-green-600">✅ Certificat Vérifié</h1>
-
-    <p class="mb-4">
-      Ce QR code confirme que :
-    </p>
-
-    <p class="font-bold text-lg" id="nom"></p>
-
-    <p class="mt-4">
-      a effectivement pris part à la formation intitulée :
-    </p>
-
-    <p class="italic font-semibold mt-2">
-      « MODULE 1 – PILOTER LES DÉCISIONS RH & PAIE DÈS LE RECRUTEMENT »
-    </p>
-
-    <p class="mt-4">
-      Cette session a été organisée conjointement par les cabinets
-      <strong>Y Cube Audits et Conseils</strong> et <strong>LHR</strong>.
-    </p>
-
-    <p class="mt-4">
-      Formation réalisée le : <span id="date" class="font-semibold"></span>
-    </p>
-
-    <p class="mt-6 text-sm text-gray-500">
-      Ce certificat est authentique et délivré dans le cadre des activités de formation des cabinets organisateurs.
-    </p>
-
-  </div>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("nom").textContent = params.get("nom") || "Nom inconnu";
-    document.getElementById("date").textContent = params.get("date") || "Date inconnue";
-  </script>
-
-  <style>
-    .animate-fade-in {
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vérification Certificat</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -78,19 +11,22 @@
 
   <!-- LOGOS -->
   <div class="w-full max-w-5xl flex justify-between items-center mb-6">
+    
     <div class="flex items-center gap-2">
-      <img src="image.png" class="h-20">
-      <span class="font-semibold text-gray-700">Lawson Human Ressours</span>
+      <img src="image.png" class="h-20" alt="Logo LHR">
+      <span class="font-semibold text-gray-700">Lawson Human Ressources</span>
     </div>
 
     <div class="flex items-center gap-2">
       <span class="font-semibold text-gray-700">Y3 Audits et Conseils</span>
-      <img src="logo-y3.jpg" class="h-20">
+      <img src="logo-y3.jpg" class="h-20" alt="Logo Y3">
     </div>
+
   </div>
 
   <!-- HEADER -->
   <div class="text-center mb-6">
+    
     <div class="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-yellow-500 flex items-center justify-center text-yellow-500 text-2xl animate-pulse">
       ✔
     </div>
@@ -102,6 +38,7 @@
     <p class="text-gray-500 mt-1">
       Authenticité garantie par signature numérique
     </p>
+
   </div>
 
   <!-- CARD -->
@@ -131,7 +68,7 @@
     </p>
 
     <p class="mt-4">
-      Formation réalisée le : 
+      Formation réalisée le :
       <span id="date" class="font-semibold"></span>
     </p>
 
@@ -156,6 +93,7 @@
     const card = document.getElementById("card");
 
     if (nom && date) {
+
       // CERTIFICAT VALIDE
       statusIcon.innerHTML = "✔";
       statusIcon.className = "text-green-600 text-4xl mb-4";
@@ -163,11 +101,12 @@
       statusTitle.innerText = "Certificat authentique";
       statusTitle.classList.add("text-green-600");
 
-      // 🔥 AJOUT "Madame/Monsieur"
-      document.getElementById("nom").innerText = ` ${nom}`;
+      // Nom sans Madame/Monsieur
+      document.getElementById("nom").innerText = nom;
       document.getElementById("date").innerText = date;
 
     } else {
+
       // CERTIFICAT NON TROUVÉ
       statusIcon.innerHTML = "✖";
       statusIcon.className = "text-red-500 text-4xl mb-4";
@@ -177,7 +116,9 @@
 
       card.innerHTML = `
         <div class="text-red-500 text-4xl mb-4">✖</div>
-        <h2 class="text-xl font-bold mb-2 text-red-500">Certificat introuvable</h2>
+        <h2 class="text-xl font-bold mb-2 text-red-500">
+          Certificat introuvable
+        </h2>
         <p class="text-gray-600">
           Ce certificat n'a pas pu être vérifié.<br>
           Le lien est peut-être incomplet ou ce document n'est pas authentique.

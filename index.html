@@ -1,75 +1,10 @@
-<!-- <!-- <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Vérification Certificat</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-br from-purple-600 to-indigo-800 min-h-screen flex items-center justify-center text-white">
-
-  <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl max-w-xl text-center animate-fade-in">
-    
-    <h1 class="text-2xl font-bold mb-4 text-green-600">✅ Certificat Vérifié</h1>
-
-    <p class="mb-4">
-      Ce QR code confirme que :
-    </p>
-
-    <p class="font-bold text-lg" id="nom"></p>
-
-    <p class="mt-4">
-      a effectivement pris part à la formation intitulée :
-    </p>
-
-    <p class="italic font-semibold mt-2">
-      « MODULE 1 – PILOTER LES DÉCISIONS RH & PAIE DÈS LE RECRUTEMENT »
-    </p>
-
-    <p class="mt-4">
-      Cette session a été organisée conjointement par les cabinets
-      <strong>Y Cube Audits et Conseils</strong> et <strong>LHR</strong>.
-    </p>
-
-    <p class="mt-4">
-      Formation réalisée le : <span id="date" class="font-semibold"></span>
-    </p>
-
-    <p class="mt-6 text-sm text-gray-500">
-      Ce certificat est authentique et délivré dans le cadre des activités de formation des cabinets organisateurs.
-    </p>
-
-  </div>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("nom").textContent = params.get("nom") || "Nom inconnu";
-    document.getElementById("date").textContent = params.get("date") || "Date inconnue";
-  </script>
-
-  <style>
-    .animate-fade-in {
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vérification Certificat</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -77,20 +12,40 @@
 
   <!-- LOGOS -->
   <div class="w-full max-w-5xl flex justify-between items-center mb-6">
-    <div class="flex items-center gap-2">
-      <img src="image.png" class="h-20">
-      <span class="font-semibold text-gray-700">Lawson Human Ressours</span>
+
+    <!-- LOGO LHR -->
+    <div class="flex items-center gap-3">
+      <img
+        src="logo-lhr.png"
+        alt="LHR"
+        class="h-20 object-contain pointer-events-none select-none"
+      >
+
+      <span class="font-semibold text-gray-700 text-sm md:text-base">
+       LAWSON HUMAN RESOURCES.
+      </span>
     </div>
 
-    <div class="flex items-center gap-2">
-      <span class="font-semibold text-gray-700">Y3 Audits et Conseils</span>
-      <img src="logo-y3.jpg" class="h-20">
+    <!-- LOGO Y3 -->
+    <div class="flex items-center gap-3">
+
+      <span class="font-semibold text-gray-700 text-sm md:text-base">
+        Y3 Audit & Conseils
+      </span>
+
+      <img
+        src="logo-y3.jpg"
+        alt="Y3 Audit & Conseils"
+        class="h-20 object-contain pointer-events-none select-none"
+      >
     </div>
+
   </div>
 
   <!-- HEADER -->
   <div class="text-center mb-6">
-    <div class="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-yellow-500 flex items-center justify-center text-yellow-500 text-2xl animate-pulse">
+
+    <div class="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-green-500 flex items-center justify-center text-green-500 text-2xl animate-pulse">
       ✔
     </div>
 
@@ -101,11 +56,16 @@
     <p class="text-gray-500 mt-1">
       Authenticité garantie par signature numérique
     </p>
+
   </div>
 
   <!-- CARD -->
-  <div id="card" class="bg-white max-w-2xl w-full rounded-2xl shadow-xl p-8 text-center transition-all duration-500">
+  <div
+    id="card"
+    class="bg-white max-w-2xl w-full rounded-2xl shadow-2xl p-8 text-center transition-all duration-500 hover:scale-[1.01]"
+  >
 
+    <!-- STATUS -->
     <div id="statusIcon" class="text-4xl mb-4"></div>
 
     <h2 id="statusTitle" class="text-xl font-bold mb-2"></h2>
@@ -114,75 +74,121 @@
       Ce QR code confirme que :
     </p>
 
-    <p id="nom" class="text-lg font-bold text-gray-800"></p>
+    <!-- NOM -->
+    <p id="nom" class="text-2xl font-bold text-gray-800"></p>
 
     <p class="mt-3 text-gray-600">
       a effectivement pris part à la formation intitulée :
     </p>
 
-    <div class="mt-4 p-3 rounded-xl border bg-green-50 text-green-700 font-semibold">
+    <!-- FORMATION -->
+    <div class="mt-4 p-4 rounded-xl border border-green-200 bg-green-50 text-green-700 font-semibold leading-relaxed">
       MODULE 1 – PILOTER LES DÉCISIONS RH & PAIE DÈS LE RECRUTEMENT
     </div>
 
-    <p class="mt-4 text-gray-600">
+    <!-- ORGANISATEURS -->
+    <p class="mt-4 text-gray-600 leading-relaxed">
       Cette session a été organisée conjointement par les cabinets
-      <strong>Y Cube Audit & Conseils</strong> et <strong>LHR</strong>.
+      <strong>Y3 Audit & Conseils</strong>
+      et
+      <strong>LAWSON HUMAN RESOURCES</strong>.
     </p>
 
-    <p class="mt-4">
-      Formation réalisée le : 
+    <!-- DATE -->
+    <p class="mt-5 text-gray-700">
+      Formation réalisée les :
       <span id="date" class="font-semibold"></span>
     </p>
 
-    <p class="mt-6 text-sm text-gray-500">
-      Ce certificat est authentique et délivré dans le cadre des activités de formation des cabinets Y Cube Audit & Conseils et LHR.
+    <!-- NUMERO CERTIFICAT -->
+    <p class="mt-2 text-gray-700">
+      Numéro du certificat :
+      <span id="numero" class="font-semibold text-gray-900"></span>
+    </p>
+
+    <!-- MESSAGE -->
+    <p class="mt-6 text-sm text-gray-500 leading-relaxed">
+      Ce certificat est authentique et délivré dans le cadre des activités de formation des cabinets
+      Y3 Audit & Conseils et LAWSON HUMAN RESOURCES.
     </p>
 
   </div>
 
   <!-- FOOTER -->
-  <p class="text-xs text-gray-400 mt-6">
+  <p class="text-xs text-gray-400 mt-6 text-center">
     🔒 Document sécurisé • Authentification garantie
   </p>
 
+  <!-- SCRIPT -->
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const nom = params.get("nom");
-    const date = params.get("date");
 
+    // BASE DES CERTIFICATS
+    const certificats = {
+
+      "CERT-2026-M1-0001": {
+        nom: "Ismael Konso CAMARA",
+        date: "12 et 13 mars 2026",
+        numero: "CERT-2026-M1-0001"
+      },
+
+      "CERT-2026-M1-0002": {
+        nom: "Jean Martial ZANAHIN",
+        date: "12 et 13 mars 2026",
+        numero: "CERT-2026-M1-0002"
+      },
+
+      "CERT-2026-M1-0003": {
+        nom: "Arnaud Lewis Kouadio ADAE",
+        date: "12 et 13 mars 2026",
+        numero: "CERT-2026-M1-0003"
+      }
+
+    };
+
+    // RECUPERATION DE L'ID
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    // ELEMENTS
     const statusIcon = document.getElementById("statusIcon");
     const statusTitle = document.getElementById("statusTitle");
     const card = document.getElementById("card");
 
-    if (nom && date) {
-      // CERTIFICAT VALIDE
+    // VERIFICATION
+    if (certificats[id]) {
+
+      const certif = certificats[id];
+
+      // ICONE
       statusIcon.innerHTML = "✔";
       statusIcon.className = "text-green-600 text-4xl mb-4";
 
+      // TITRE
       statusTitle.innerText = "Certificat authentique";
       statusTitle.classList.add("text-green-600");
 
-      // NOM SANS MADAME/MONSIEUR
-      document.getElementById("nom").innerText = nom;
-      document.getElementById("date").innerText = date;
+      // INFOS
+      document.getElementById("nom").innerText = certif.nom;
+      document.getElementById("date").innerText = certif.date;
+      document.getElementById("numero").innerText = certif.numero;
 
     } else {
-      // CERTIFICAT NON TROUVÉ
-      statusIcon.innerHTML = "✖";
-      statusIcon.className = "text-red-500 text-4xl mb-4";
 
-      statusTitle.innerText = "Certificat introuvable";
-      statusTitle.classList.add("text-red-500");
-
+      // ERREUR
       card.innerHTML = `
-        <div class="text-red-500 text-4xl mb-4">✖</div>
-        <h2 class="text-xl font-bold mb-2 text-red-500">Certificat introuvable</h2>
-        <p class="text-gray-600">
+        <div class="text-red-500 text-5xl mb-4">✖</div>
+
+        <h2 class="text-2xl font-bold mb-3 text-red-500">
+          Certificat introuvable
+        </h2>
+
+        <p class="text-gray-600 leading-relaxed">
           Ce certificat n'a pas pu être vérifié.<br>
-          Le lien est peut-être incomplet ou ce document n'est pas authentique.
+          Le lien est peut-être incorrect ou ce document n'est pas authentique.
         </p>
       `;
     }
+
   </script>
 
 </body>

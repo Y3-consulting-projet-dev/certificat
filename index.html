@@ -14,25 +14,16 @@
   <div class="w-full max-w-5xl flex justify-between items-center mb-6">
 
     <!-- LOGO LHR -->
-    <div class="flex items-center gap-3">
+    <div>
       <img
         src="logo-lhr.png"
         alt="LHR"
         class="h-20 object-contain pointer-events-none select-none"
       >
-
-      <span class="font-semibold text-gray-700 text-sm md:text-base">
-       LAWSON HUMAN RESOURCES.
-      </span>
     </div>
 
     <!-- LOGO Y3 -->
-    <div class="flex items-center gap-3">
-
-      <span class="font-semibold text-gray-700 text-sm md:text-base">
-        Y3 Audit & Conseils
-      </span>
-
+    <div>
       <img
         src="logo-y3.jpg"
         alt="Y3 Audit & Conseils"
@@ -122,32 +113,12 @@
   <!-- SCRIPT -->
   <script>
 
-    // BASE DES CERTIFICATS
-    const certificats = {
-
-      "CERT-2026-M1-0001": {
-        nom: "Ismael Konso CAMARA",
-        date: "12 et 13 mars 2026",
-        numero: "CERT-2026-M1-0001"
-      },
-
-      "CERT-2026-M1-0002": {
-        nom: "Jean Martial ZANAHIN",
-        date: "12 et 13 mars 2026",
-        numero: "CERT-2026-M1-0002"
-      },
-
-      "CERT-2026-M1-0003": {
-        nom: "Arnaud Lewis Kouadio ADAE",
-        date: "12 et 13 mars 2026",
-        numero: "CERT-2026-M1-0003"
-      }
-
-    };
-
-    // RECUPERATION DE L'ID
+    // RECUPERATION DES PARAMETRES DU QR CODE
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+
+    const nom = params.get("nom");
+    const numero = params.get("numero");
+    const date = params.get("date");
 
     // ELEMENTS
     const statusIcon = document.getElementById("statusIcon");
@@ -155,9 +126,7 @@
     const card = document.getElementById("card");
 
     // VERIFICATION
-    if (certificats[id]) {
-
-      const certif = certificats[id];
+    if (nom && numero && date) {
 
       // ICONE
       statusIcon.innerHTML = "✔";
@@ -168,13 +137,13 @@
       statusTitle.classList.add("text-green-600");
 
       // INFOS
-      document.getElementById("nom").innerText = certif.nom;
-      document.getElementById("date").innerText = certif.date;
-      document.getElementById("numero").innerText = certif.numero;
+      document.getElementById("nom").innerText = nom;
+      document.getElementById("date").innerText = date;
+      document.getElementById("numero").innerText = numero;
 
     } else {
 
-      // ERREUR
+      // MESSAGE D'ERREUR
       card.innerHTML = `
         <div class="text-red-500 text-5xl mb-4">✖</div>
 
